@@ -9,6 +9,11 @@
     max-width: 400px;
 }
 
+.logo-img {
+    width:400px;
+    overflow: hidden;
+}
+
 .login-form {
     display: flex;
     flex-direction: column;
@@ -63,4 +68,8 @@
  .line-text span { 
      background:#fff; 
      padding:0 10px; 
+ }
+
+ .logo-wrapper {
+     height: 325px;
  }

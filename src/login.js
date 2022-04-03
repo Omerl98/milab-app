@@ -2,6 +2,7 @@ import "./login.css";
 import appleIcon from "./assets/apple.svg";
 import googleIcon from "./assets/google.svg";
 import fbIcon from "./assets/facebook.svg";
+import mainLogo from "./assets/mainLogo.png";
 
 
 
@@ -11,7 +12,9 @@ function Login() {
 
     return (
         <div className="container">
-            <img className="logo-img"/>
+            <div className="logo-wrapper">
+                <img src={mainLogo} className="logo-img"/>
+            </div>
 
             <form className="login-form">
                 <label>First Name</label>
