@@ -1,4 +1,4 @@
-import "./login.css";
+import "./signup.css";
 import appleIcon from "./assets/apple.svg";
 import googleIcon from "./assets/google.svg";
 import fbIcon from "./assets/facebook.svg";
@@ -6,9 +6,11 @@ import mainLogo from "./assets/mainLogo.png";
 import {useEffect, useState} from "react";
 
 
+const handleRequest = () => {
 
+}
 
-function Login() {
+function SignUp() {
 
     const [firstName,setFirstName] = useState('');
     const [lastName,setLastName] = useState('');
@@ -22,7 +24,7 @@ function Login() {
                 <img src={mainLogo} className="logo-img"/>
             </div>
 
-            <form className="login-form">
+            <form className="login-form" onsubmit="event.preventDefault();">
                 <label>First Name</label>
                 <input type="text" onChange={event => setFirstName(event.target.value)} name="first-name"/>
                 <label>Last Name</label>
@@ -31,11 +33,11 @@ function Login() {
                 <input type="text" onChange={event => setEmail(event.target.value)} name="email"/>
                 <label>Password</label>
                 <input type="text" onChange={event => setPassword(event.target.value)} name="password"/>
-                <button class="submit-button" type="submit">Join the hood</button>
+                <button class="submit-button" type="submit" onClick={handleRequest}>Join the hood</button>
             </form>
             <p className="line-text"><span>OR</span></p>
             <div className="social-nav">
-                <img src={fbIcon} href="#" className="icon fb-icon" />
+                <img src={fbIcon} className="icon fb-icon" />
                 <img src={googleIcon} className="icon google-icon" />
                 <img src={appleIcon} className="icon apple-icon" />
             </div>
@@ -44,4 +46,4 @@ function Login() {
     );
   }
   
-  export default Login;
+  export default SignUp;
