@@ -18,9 +18,11 @@ function SignUp() {
     const postReq = async () => {
         console.log(password)
         console.log(email)
-        await axios.post('http://localhost:8080/userSignUp', {
-            email: email,
-            password: password
+        await axios.get('http://localhost:8080/userSignUp', {
+            params: {
+                email: email,
+                password: password
+              }
           })
           .then(function (response) {
             console.log(response);
@@ -29,8 +31,6 @@ function SignUp() {
             console.log(error);
           });
     };
-
-
     return (
         <div className="container">
             <div className="logo-wrapper">
