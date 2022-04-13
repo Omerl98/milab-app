@@ -4,11 +4,9 @@ import googleIcon from "./assets/google.svg";
 import fbIcon from "./assets/facebook.svg";
 import mainLogo from "./assets/mainLogo.png";
 import {useEffect, useState} from "react";
+import axios from "axios";
 
 
-const handleRequest = () => {
-
-}
 
 function SignUp() {
 
@@ -16,6 +14,21 @@ function SignUp() {
     const [lastName,setLastName] = useState('');
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
+
+    const postReq = async () => {
+        console.log(password)
+        console.log(email)
+        await axios.post('http://localhost:8080/userSignUp', {
+            email: email,
+            password: password
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    };
 
 
     return (
@@ -33,7 +46,7 @@ function SignUp() {
                 <input type="text" onChange={event => setEmail(event.target.value)} name="email"/>
                 <label>Password</label>
                 <input type="text" onChange={event => setPassword(event.target.value)} name="password"/>
-                <button class="submit-button" type="submit" onClick={handleRequest}>Join the hood</button>
+                <button class="submit-button" type="button" onClick={postReq}>Join the hood</button>
             </form>
             <p className="line-text"><span>OR</span></p>
             <div className="social-nav">
