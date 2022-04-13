@@ -12,12 +12,14 @@ import {
 } from "firebase/auth";
 import { getDatabase, ref, onValue, set, update } from "firebase/database";
 
-
 let app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
   next();
 });
 
@@ -49,6 +51,7 @@ app.get("/userSignUp", function (req, res) {
         `The user ${userCredential.user.reloadUserInfo.email} sign Up successfully`
       );
       console.log(userCredential.user.uid);
+      // res.redirect("./userSignUpSecond")
       res.send(JSON.stringify({ isCreatedUser: true }));
     })
     .catch((error) => {
@@ -60,50 +63,70 @@ app.get("/userSignUp", function (req, res) {
     });
 });
 
-app.get("/userSignIn", function (req, res) {
-  const auth = getAuth();
-  signInWithEmailAndPassword(auth, req.query.email, req.query.password)
-    .then((userCredential) => {
-      // Signed in
-      console.log(
-        `${userCredential.user.reloadUserInfo.email} signed in successfully`
-      );
-      res.send(JSON.stringify({ isUser: true, id: auth.currentUser }));
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(`errorCode:  ${errorCode}`);
-      console.log(`errorMessage:  ${errorMessage}`);
-      console.log(error);
-      res.send(JSON.stringify({ isUser: false }));
-    });
-});
+//-------------currently there is no use in this code:-----------------
+// app.get("/userSignIn", function (req, res) {
+//   const auth = getAuth();
+//   signInWithEmailAndPassword(auth, req.query.email, req.query.password)
+//     .then((userCredential) => {
+//       // Signed in
+//       console.log(
+//         `${userCredential.user.reloadUserInfo.email} signed in successfully`
+//       );
+//       res.send(JSON.stringify({ isUser: true, id: auth.currentUser }));
+//     })
+//     .catch((error) => {
+//       const errorCode = error.code;
+//       const errorMessage = error.message;
+//       console.log(`errorCode:  ${errorCode}`);
+//       console.log(`errorMessage:  ${errorMessage}`);
+//       console.log(error);
+//       res.send(JSON.stringify({ isUser: false }));
+//     });
+// });
 
-app.get("/userSignIn/form", function (req, res) {
+app.get("/SignUpSecond", function (req, res) {
   const auth = getAuth();
   onAuthStateChanged(auth, (user) => {
     if (user) {
       let userData = {
         email: user.email,
-        firstName: "",
-        lastName: "",
+        firstName: req.query.firstName,
+        lastName: req.query.lastName,
+        age: req.query.age,
         address: {
-          city: "",
-          street: "",
-          streetNum: "",
+          city: req.query.city,
+          street: req.query.street,
+          streetNum: req.query.street_num,
         },
-        phone: "",
         profileImage: "",
+        hobbies: [],
         activities: [],
       };
       const refrence = ref(db, "users/" + user.uid);
       set(refrence, userData);
+      console.log("user second part saved in DB");
       res.send(
         JSON.stringify({ user: user.reloadUserInfo.email, data: userData })
       );
     } else {
-      console.log(`The user signed out`);
+      console.log(`The user isn't sign in at the moment`);
+      res.send(JSON.stringify({ isUser: false }));
+    }
+  });
+});
+
+app.get("/SignUpThird", function (req, res) {
+  const auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const refrence = ref(db, "users/" + user.uid + "/hobbies");
+      set(refrence, req.query.hobbies);
+      console.log("user third part saved in DB");
+      res.send(
+        JSON.stringify({ user: user.reloadUserInfo.email, hobbies: req.query.hobbies })
+      );
+    } else {
+      console.log(`couldn't save hobbies of this user in DB`);
       res.send(JSON.stringify({ isUser: false }));
     }
   });
@@ -217,8 +240,6 @@ app.get("/joinActivity", function (req, res) {
 // });
 
 // ================== FireBase To Map ================== //
-
-console.log(new Date());
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

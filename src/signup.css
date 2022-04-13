@@ -17,6 +17,7 @@
 .login-form {
     display: flex;
     flex-direction: column;
+    margin-top: 30px;
 }
 
 .login-form > input {
@@ -25,6 +26,7 @@
     width: 300px;
     margin: 5px 0px 30px 50px;
     height: 30px;
+    text-align: center;
 }
 
 .login-form > label {
@@ -33,13 +35,13 @@
 
 .submit-button {
     border-radius: 25px;
-    border: 1px solid black;
+    border: 0px solid black;
     width: 300px;
     height: 40px;
     margin:auto;
     background-color:dodgerblue;
     color: white;
-
+    cursor: pointer;
 }
 
 .social-nav {
@@ -73,3 +75,14 @@
  .logo-wrapper {
      height: 325px;
  }
+
+
+ h2{
+     text-align: center;
+ }
+
+ h3{
+    text-align: center;
+    margin: 0px 0px 0px 0px;
+}
+
