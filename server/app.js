@@ -40,7 +40,7 @@ const db = getDatabase();
 
 // ================== Authentication ================== //
 
-app.post("/userSignUp", function (req, res) {
+app.get("/userSignUp", function (req, res) {
   const auth = getAuth(appFirebase);
   createUserWithEmailAndPassword(auth, req.query.email, req.query.password)
     .then((userCredential) => {
