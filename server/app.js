@@ -2,9 +2,6 @@ import express from "express";
 import bodyParser from "body-parser";
 import uniqid from "uniqid";
 
-let app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
-
 // ================== firebase ================== //
 import { initializeApp } from "firebase/app";
 import {
@@ -14,6 +11,15 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { getDatabase, ref, onValue, set, update } from "firebase/database";
+
+
+let app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -34,8 +40,8 @@ const db = getDatabase();
 
 // ================== Authentication ================== //
 
-app.get("/userSignUp", function (req, res) {
-  const auth = getAuth();
+app.post("/userSignUp", function (req, res) {
+  const auth = getAuth(appFirebase);
   createUserWithEmailAndPassword(auth, req.query.email, req.query.password)
     .then((userCredential) => {
       // Signed Up
