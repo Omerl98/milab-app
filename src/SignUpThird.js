@@ -3,15 +3,14 @@ import mainLogo from "./assets/mainLogo.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function SignUpSecond() {
-  const [hobbies, setHobbies] = useState(["sport", "matcot"]);
-  
-
+function SignUpThird() {
+  let hobbies = [];
   const postReq = async () => {
+    console.log(hobbies);
     await axios
       .get("http://localhost:8080/SignUpThird", {
         params: {
-          hobbies: hobbies
+          hobbies: hobbies,
         },
       })
       .then(function (response) {
@@ -21,6 +20,40 @@ function SignUpSecond() {
         console.log(error);
       });
   };
+
+  const clickedHobbyButton = (hobby, element) => {
+    if (element.target.className === "hobby-button-before")
+      element.target.className = "hobby-button-after";
+    else element.target.className = "hobby-button-before";
+
+    if (hobbies.includes(hobby)) {
+      let filtered = hobbies.filter((value) => {
+        return value !== hobby;
+      });
+      hobbies = filtered;
+    } else hobbies.push(hobby);
+  };
+  let hobbiesOptions = [
+    "Pet",
+    "Sport",
+    "Yoga",
+    "Play date",
+    "fostering",
+    "Baking",
+    "Family",
+    "Walk",
+    "Cosmetic",
+    "Trip",
+    "Art",
+    "Dance",
+    "Fashion",
+    "Pilates",
+    "Cooking",
+    "Swim",
+    "Movies",
+    "Writing",
+  ];
+
   return (
     <div className="container">
       <div className="logo-wrapper">
@@ -28,14 +61,18 @@ function SignUpSecond() {
       </div>
       <h2>What do you like to do?</h2>
 
-      <form className="login-form" onsubmit="event.preventDefault();">
-        <label>First Name:</label>
-        <input
-          type="checkbox"
-          onChange={(event) => setHobbies(event.target.value)}
-          name="first-name" placeholder="asdwsd"
-        />
-       
+      <form className="hobbies-form" onSubmit="event.preventDefault();">
+        {hobbiesOptions.map((hobby, index) => (
+          <input
+            key={index}
+            className="hobby-button-before"
+            type="button"
+            onClick={(element) =>
+              clickedHobbyButton(element.target.value, element)
+            }
+            value={hobby}
+          />
+        ))}
         <button className="submit-button" type="button" onClick={postReq}>
           Done
         </button>
@@ -44,4 +81,4 @@ function SignUpSecond() {
   );
 }
 
-export default SignUpSecond;
+export default SignUpThird;

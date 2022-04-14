@@ -5,6 +5,7 @@ import { useState } from 'react';
 import SignUp from "./signup.js";
 import SignUpSecond from "./SignUpSecond.js";
 import SignUpThird from "./SignUpThird.js";
+import SignUpFourth from "./SignUpFourth.js";
 
 
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/" element={<SignUp />} />
         <Route path="/SignUpSecond" element={<SignUpSecond />}/>
         <Route path="/SignUpThird" element={<SignUpThird />}/>
+        <Route path="/SignUpFourth" element={<SignUpFourth />}/>
         <Route path='/home' render={() => {return <div> HERE </div>}}  />
     </Routes>
   );
