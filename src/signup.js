@@ -3,6 +3,8 @@ import appleIcon from "./assets/apple.svg";
 import googleIcon from "./assets/google.svg";
 import fbIcon from "./assets/facebook.svg";
 import mainLogo from "./assets/mainLogo.png";
+import { Routes, Route, Link } from "react-router-dom";
+
 import {useEffect, useState} from "react";
 import axios from "axios";
 
@@ -41,7 +43,10 @@ function SignUp() {
                 <input type="text" onChange={event => setEmail(event.target.value)} name="email"/>
                 <label>Password</label>
                 <input type="text" onChange={event => setPassword(event.target.value)} name="password"/>
-                <button className="submit-button" type="button" onClick={postReq}>Join the hood</button>
+                
+                <Link className="submit-button" to={{pathname: '/signupsecond'}}><button className="submit-button" type="button" onClick={postReq} >Join the hood</button></Link>
+
+
             </form>
             <p className="line-text"><span>OR</span></p>
             <div className="social-nav">

@@ -1,6 +1,7 @@
 import "./signup.css";
 import mainLogo from "./assets/mainLogo.png";
 import { useEffect, useState } from "react";
+import { Routes, Route, Link } from "react-router-dom";
 import axios from "axios";
 
 function SignUpSecond() {
@@ -79,9 +80,14 @@ function SignUpSecond() {
           name="street_num"
           placeholder="Your street number"
         />
+
+        <Link className="submit-button" to={{pathname: '/signupthird'}}>
         <button className="submit-button" type="button" onClick={postReq}>
           Next
         </button>
+        </Link>
+
+
       </form>
     </div>
   );
