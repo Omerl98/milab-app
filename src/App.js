@@ -6,6 +6,7 @@ import SignUp from "./signup.js";
 import SignUpSecond from "./SignUpSecond.js";
 import SignUpThird from "./SignUpThird.js";
 import SignUpFourth from "./SignUpFourth.js";
+import Home from "./Home.js";
 
 
 
@@ -23,7 +24,7 @@ function App() {
         <Route path="/SignUpSecond" element={<SignUpSecond />}/>
         <Route path="/SignUpThird" element={<SignUpThird />}/>
         <Route path="/SignUpFourth" element={<SignUpFourth />}/>
-        <Route path='/home' render={() => {return <div> HERE </div>}}  />
+        <Route path='/home' element={<Home />}  />
     </Routes>
   );
 }

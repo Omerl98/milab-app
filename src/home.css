@@ -8,3 +8,24 @@
     margin: auto;
     max-width: 400px;
 }
+
+.top-bar {
+    display: flex;
+}
+
+.top-bar > p {
+    font-size: 20px;
+    margin-right: 60px;
+}
+
+.top-bar-name {
+    font-weight: bold;
+}
+
+.user-icon {
+    margin-right: 16px;
+}
+
+.icon {
+    width: 20px;
+}
