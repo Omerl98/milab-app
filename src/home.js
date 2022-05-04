@@ -3,7 +3,10 @@ import {useEffect, useState, useRef} from "react";
 import React from 'react';
 import userIcon from "./assets/user.svg";
 import searchIcon from "./assets/search.svg";
-import { Wrapper, Status } from "@googlemaps/react-wrapper";
+import { useJsApiLoader } from "@react-google-maps/api";
+import Map from "./components/Map.js";
+
+
 
 const name = "Omer";
 
@@ -27,6 +30,8 @@ const hobbiesOptions = [
     "Movies",
     "Writing",
   ];
+
+  const API_KEY = "AIzaSyBVW1cV_eXNMYX00F7NWSG7x4fisH15-f4";
   
 
 function Home() {
@@ -35,14 +40,6 @@ function Home() {
     const [lastName,setLastName] = useState('');
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
-    const ref = useRef(null);
-    const [map, setMap] = useState();
-
-    useEffect(() => {
-        if (ref.current && !map) {
-            setMap(new window.google.maps.Map(ref.current, {}));
-        }
-        }, [ref, map]);
 
 
     return (
@@ -52,18 +49,18 @@ function Home() {
                 <img src={userIcon} className="icon user-icon" />
                 <img src={searchIcon} className="icon search-icon" />
             </div>
-           <div className="activity-search-bar">
+            <div className="activity-search-bar">
 
-           </div>
-           <div className="google-map-container">
+            </div>
+            <div className="google-map-container">
+            <Map />
+            </div>
+            <div className="activity-slider">
+                
+            </div>
+            <div className="navbar">
 
-           </div>
-           <div className="activity-slider">
-               
-           </div>
-           <div className="navbar">
-
-           </div>
+            </div>
         </div>
     );
   }

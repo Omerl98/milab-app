@@ -7,6 +7,7 @@ import SignUpSecond from "./SignUpSecond.js";
 import SignUpThird from "./SignUpThird.js";
 import SignUpFourth from "./SignUpFourth.js";
 import Home from "./Home.js";
+import Map from "./components/Map.js";
 
 
 
@@ -25,6 +26,8 @@ function App() {
         <Route path="/SignUpThird" element={<SignUpThird />}/>
         <Route path="/SignUpFourth" element={<SignUpFourth />}/>
         <Route path='/home' element={<Home />}  />
+        <Route path='/map' element={<Map />} />
+
     </Routes>
   );
 }
