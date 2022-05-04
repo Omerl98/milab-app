@@ -10,7 +10,7 @@ import { useState, useMemo, useEffect, useRef } from "react";
 import "./Map.css";
 
 
-const API_KEY = "AIzaSyDhLlbHxVGotIwjbr7dRuRZXhnEQblopeM";
+const API_KEY = "";
 
 export default function Map() {
 
