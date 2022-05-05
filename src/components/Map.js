@@ -1,30 +1,40 @@
-import {
-    GoogleMap,
-    Marker,
-    DirectionsRenderer,
-    Circle,
-    MarkerClusterer,
-    useLoadScript
-  } from "@react-google-maps/api";
-import { useState, useMemo, useEffect, useRef } from "react";
-import "./Map.css";
+import { useLoadScript } from "@react-google-maps/api";
+import GoogleMapReact from 'google-map-react';
+import { API_KEY } from "../keys.js";
+import Marker from "./Marker.jsx";
+
+export default function Map(props) {
+
+  const defaultProps = {
+    center: {
+      lat: 32.109333,
+      lng: 34.855499
+    },
+    zoom: 10
+  };
+
+  const { activities } = props;
+
+  const { isLoaded } = useLoadScript({
+      id: 'google-map-script',
+      googleMapsApiKey: API_KEY,
+    });
 
 
-const API_KEY = "AIzaSyDhLlbHxVGotIwjbr7dRuRZXhnEQblopeM";
-
-export default function Map() {
-
-
-    const { isLoaded } = useLoadScript({
-        id: 'google-map-script',
-        googleMapsApiKey: API_KEY,
-      });
-
-
-    if (!isLoaded) return <div> Loading... </div>
-    return(
-            <GoogleMap zoom={10} center={{lat:100, lng: 100}} mapContainerClassName="mapContainer" >
-                <Marker  position={{lat:100, lng: 100}}></Marker>
-            </GoogleMap>
-    )
+  if (!isLoaded) return <div> Loading... </div>
+  return(
+          <div className="mapContainer" style={{width: "100%", height:"40vh"}}>
+            <GoogleMapReact
+              bootstrapURLKeys={{ key: API_KEY }}
+              defaultCenter={defaultProps.center}
+              defaultZoom={defaultProps.zoom}
+            >
+             <Marker
+            lat={32.109333}
+            lng={34.855499}
+            text="My Marker"
+          />
+            </GoogleMapReact>
+          </div>
+  )
 }

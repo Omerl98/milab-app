@@ -2,22 +2,16 @@ import logo from './logo.svg';
 import './App.css';
 import { Routes, Route, Link } from "react-router-dom";
 import { useState } from 'react';
-import SignUp from "./signup.js";
-import SignUpSecond from "./SignUpSecond.js";
-import SignUpThird from "./SignUpThird.js";
-import SignUpFourth from "./SignUpFourth.js";
-import Home from "./Home.js";
-import Map from "./components/Map.js";
+import SignUp from "./signup";
+import SignUpSecond from "./SignUpSecond";
+import SignUpThird from "./SignUpThird";
+import SignUpFourth from "./SignUpFourth";
+import Home from "./Home";
+import Map from "./components/Map";
 
 
 
 function App() {
-
-  // const [token, setToken] = useState();
-
-  // if(!token) {
-  //   return <SignUp setToken={setToken} />
-  // }
 
   return (
     <Routes>
