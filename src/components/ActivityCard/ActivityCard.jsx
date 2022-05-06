@@ -1,5 +1,5 @@
 import "./ActivityCard.css";
-import runningImg from '../assets/activities/running.jpg';
+import runningImg from '../../assets/activities/running.jpg';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -15,7 +15,7 @@ export default function ActivityCard(props) {
     }
   
     return(
-            <Card sx={{minWidth:180, maxWidth: 180 }}>
+            <Card sx={{minWidth:200, maxWidth: 180 }}>
             <CardMedia
                 component="img"
                 alt={`activity-${type}`}

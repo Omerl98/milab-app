@@ -7,7 +7,7 @@ import SignUpSecond from "./SignUpSecond";
 import SignUpThird from "./SignUpThird";
 import SignUpFourth from "./SignUpFourth";
 import Home from "./Home";
-import Map from "./components/Map";
+import Map from "./components/Map/Map";
 
 
 

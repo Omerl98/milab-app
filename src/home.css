@@ -6,16 +6,23 @@
 
 .container {
     margin: auto;
-    max-width: 400px;
+    max-width: 360px;
+    max-height: 800px;
 }
 
 .top-bar {
     display: flex;
+    justify-content: space-between;
+}
+
+.top-icons {
+    display: flex;
+
 }
 
 .top-bar > p {
-    font-size: 20px;
-    margin-right: 60px;
+    font-size: 16px;
+    /* margin-right: 90px; */
 }
 
 .top-bar-name {
@@ -40,4 +47,14 @@
     padding: 0 5px 10px 1px;
     width: 100%;
     overflow-x: scroll;
+}
+
+.hobbie-chip:hover {
+    cursor: pointer;
+    color: #637EFC;
+    border: 2px solid #637EFC;
+}
+
+.hobbie-chip:target {
+    background-color: aliceblue;
 }

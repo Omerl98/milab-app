@@ -13,9 +13,11 @@
 
   }
 
-  .marker:hover {
+  .pin:hover {
     z-index: 1;
-    background-color: white;
+    background-color: rgb(18, 104, 242);
+    width: 25px;
+    height: 25px;
   }
 
   .pin {

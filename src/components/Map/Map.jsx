@@ -1,7 +1,7 @@
 import { useLoadScript } from "@react-google-maps/api";
 import GoogleMapReact from 'google-map-react';
-import { API_KEY } from "../keys.js";
-import Marker from "./Marker.jsx";
+import { API_KEY } from "../../keys.js";
+import Marker from "../Marker/Marker";
 import { Link } from "react-router-dom";
 
 export default function Map(props) {
@@ -14,16 +14,13 @@ export default function Map(props) {
     zoom: 10
   };
 
-  const onMarkerClick = (obj) => {
-    console.log(obj.lat)
-  }
   const { activities } = props;
 
   const createMapOptions = (maps) => {
     return {
       panControl: false,
       mapTypeControl: false,
-      scrollwheel: false,
+      scrollwheel: true,
       disableDefaultUI: true,
       styles: [{ stylers: [{ 'saturation': -100 }, { 'gamma': 0.9 }, { 'lightness': 50 }, { 'visibility': 'on' }] }]
     }
@@ -43,12 +40,12 @@ export default function Map(props) {
               options={createMapOptions}
               defaultCenter={defaultProps.center}
               defaultZoom={defaultProps.zoom}
-              onClick={onMarkerClick}
             >
                 {activities.map(activity => 
                   <Marker
                   lat={activity.lat}
                   lng={activity.lng}
+                  id={activity.id}
                 /> 
                 )}
           
