@@ -46,9 +46,9 @@ const hobbiesOptions = [
 
 
   const currentActivities = [
-      {type: "Running", location: "Yarkon Park, Tel Aviv", date: "1.12", time: "9:30"},
-      {type: "Running", location: "Yarkon Park, Tel Aviv", date: "1.12", time: "9:30"},
-      {type: "Running", location: "Yarkon Park, Tel Aviv", date: "1.12", time: "9:30"}
+      {type: "Running", location: "Yarkon Park, Tel Aviv", date: "1.12", time: "9:30", lat: 32.109333, lng: 34.855499},
+      {type: "Running", location: "Yarkon Park, Tel Aviv", date: "1.12", time: "9:30", lat: 32.111767, lng: 34.801361},
+      {type: "Running", location: "Yarkon Park, Tel Aviv", date: "1.12", time: "9:30", lat: 32, lng: 34}
   ]
   
 

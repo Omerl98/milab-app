@@ -1,13 +1,17 @@
 import React from 'react';
 import './Marker.css';
+import {Link} from 'react-router-dom';
 
 const Marker = (props) => {
-    const { color, name, id } = props;
+    const { color, name, id} = props;
     return (
-      <div className="marker"
-        style={{ backgroundColor: color, cursor: 'pointer'}}
-        title={name}
-      />
+        <Link to={`/activity/${id}`}>
+            <div className="pin bounce"
+            style={{ backgroundColor: color, cursor: 'pointer'}}
+            title={name}
+            />
+        </Link>
+      
     );
   };
 

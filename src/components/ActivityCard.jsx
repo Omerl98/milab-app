@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 
 export default function ActivityCard(props) {
 
-    const {type, location, date, time, participants} = props;
+    const {type, location, date, time} = props;
     const imageDictionary = {
         Running: runningImg
     }

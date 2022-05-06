@@ -21,6 +21,7 @@ function App() {
         <Route path="/SignUpFourth" element={<SignUpFourth />}/>
         <Route path='/home' element={<Home />}  />
         <Route path='/map' element={<Map />} />
+        {/* <Route path="/activity/:id" component={<Activity />} /> */}
 
     </Routes>
   );
