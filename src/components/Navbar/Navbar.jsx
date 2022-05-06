@@ -15,7 +15,7 @@ export default function Navbar() {
             sx={{boxShadow: 1}}
         >
             <BottomNavigationAction component={Link} to="/home" icon={<HomeOutlinedIcon />}></BottomNavigationAction>
-            <BottomNavigationAction component={Link} to="/" icon={<AddCircleOutlineOutlinedIcon />} />
+            <BottomNavigationAction component={Link} to="/addactivity" icon={<AddCircleOutlineOutlinedIcon />} />
             <BottomNavigationAction component={Link} to="/" icon={<EventAvailableOutlined/>}/>
         </BottomNavigation>
 

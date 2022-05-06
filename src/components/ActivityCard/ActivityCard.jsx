@@ -1,6 +1,7 @@
 import "./ActivityCard.css";
 import runningImg from '../../assets/activities/running.jpg';
 import Card from '@mui/material/Card';
+import { Link } from "react-router-dom";
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -9,13 +10,13 @@ import Typography from '@mui/material/Typography';
 
 export default function ActivityCard(props) {
 
-    const {type, location, date, time} = props;
+    const {type, location, date, time, id} = props;
     const imageDictionary = {
         Running: runningImg
     }
   
     return(
-            <Card sx={{minWidth:200, maxWidth: 180 }}>
+            <Card component={Link} to={`/activity/${id}`} sx={{minWidth:200, maxWidth: 180 }}>
             <CardMedia
                 component="img"
                 alt={`activity-${type}`}

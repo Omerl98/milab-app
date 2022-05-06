@@ -4,6 +4,7 @@ import React from 'react';
 import userIcon from "./assets/user.svg";
 import searchIcon from "./assets/search.svg";
 import ActivityCard from "./components/ActivityCard/ActivityCard";
+import { Link } from "react-router-dom";
 import Map from "./components/Map/Map";
 import Chip from '@mui/material/Chip';
 import Box from '@mui/material/Box'
@@ -28,7 +29,7 @@ const name = "Omer";
 
 function Home() {
 
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = useState(0);
     const handleClick = () => {
 
     }
@@ -43,19 +44,19 @@ function Home() {
                 </div>
             </div>
             <div className="activity-search-bar">
-            <Stack direction="row" spacing={1}>
-                {hobbiesOptions.map( hobbie => { return <Chip className="hobbie-chip" variant="outlined" label={hobbie} onClick={handleClick}/>})}
-            </Stack>
+                <Stack direction="row" spacing={1}>
+                    {hobbiesOptions.map( hobbie => { return <Chip className="hobbie-chip" variant="outlined" label={hobbie} onClick={handleClick}/>})}
+                </Stack>
             </div>
             <div className="google-map-container">
-            <Map activities={currentActivities}/>
+                <Map activities={currentActivities}/>
             </div>
             <div className="activity-slider">
-            <Stack direction="row" spacing={1}>
-                { currentActivities.map(activity => 
-                    <ActivityCard type={activity.type} location={activity.location} date={activity.date} time={activity.time}></ActivityCard>)
-                }
-            </Stack>
+                <Stack direction="row" spacing={1}>
+                    { currentActivities.map(activity => 
+                        <ActivityCard type={activity.type} id={activity.id} location={activity.location} date={activity.date} time={activity.time}/>)
+                    }
+                </Stack>
             </div>
             <div className="navbar">
                 <Navbar></Navbar>

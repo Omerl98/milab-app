@@ -8,6 +8,7 @@ import SignUpThird from "./SignUpThird";
 import SignUpFourth from "./SignUpFourth";
 import Home from "./Home";
 import AddActivity from "./AddActivity"
+import Activity from './Activity';
 import Map from "./components/Map/Map";
 
 
@@ -17,13 +18,13 @@ function App() {
   return (
     <Routes>
         <Route path="/" element={<SignUp />} />
-        <Route path="/SignUpSecond" element={<SignUpSecond />}/>
-        <Route path="/SignUpThird" element={<SignUpThird />}/>
-        <Route path="/SignUpFourth" element={<SignUpFourth />}/>
-        <Route path='/home' element={<Home />}  />
-        <Route path='/map' element={<Map />} />
-        {/* <Route path="/activity/:id" component={<Activity />} /> */}
-        <Route path='/addactivity' element={<AddActivity />} />
+        <Route path="SignUpSecond" element={<SignUpSecond />}/>
+        <Route path="SignUpThird" element={<SignUpThird />}/>
+        <Route path="SignUpFourth" element={<SignUpFourth />}/>
+        <Route path='home' element={<Home />}  />
+        <Route path='map' element={<Map />} />
+        <Route path="activity/:id" element={<Activity />} />
+        <Route path='addactivity' element={<AddActivity />} />
 
     </Routes>
   );

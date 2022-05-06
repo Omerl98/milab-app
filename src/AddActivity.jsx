@@ -28,6 +28,7 @@ function AddActivity() {
     const [description,setDescription] = useState('');
     const [participants, setParticipants] = useState([5,15]);
     const [participantType, setParticipantType] = useState('all');
+    const [activity, setActivity] = useState('')
 
     const handleParticipantType = (event) => {
       setParticipantType(event.target.value);
@@ -37,6 +38,11 @@ function AddActivity() {
         setParticipants(newValue);
         console.log(newValue);
       };
+
+    const handleActivityType = (event) => {
+    // setActivity(newValue);
+    console.log(event);
+    };
 
 
 
@@ -68,7 +74,7 @@ function AddActivity() {
                     <div className="activity-type-slider">
                     <Stack direction="row" spacing={1}>
                         <SearchIcon className="search-icon-activity"></SearchIcon>
-                        {hobbiesOptions.map( hobbie => { return <Chip sx={{height: "35px", minWidth: "80px"}} className="hobbie-chip" variant="outlined" label={hobbie}/>})}
+                        {hobbiesOptions.map( hobbie => { return <Chip value={hobbie} sx={{height: "35px", minWidth: "80px"}} className="hobbie-chip" variant="outlined" label={hobbie} onClick={handleActivityType} />})}
                     </Stack>
                     </div>
                 </div>
@@ -119,7 +125,7 @@ function AddActivity() {
                     <label>Activity Description</label>
                     <input type="text" onChange={event => setDescription(event.target.value)} name="description"/>
                 </div>
-                <Link to={{pathname: '/signupsecond'}}><button className="submit-button" type="button" onClick={postReq} >Create activity</button></Link>
+                <Link to={{pathname: '/home'}}><button className="submit-button" type="button" onClick={postReq} >Create activity</button></Link>
 
             </form>
             <navbar className="navbar">
