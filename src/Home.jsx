@@ -15,35 +15,9 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import EventAvailableOutlined from "@mui/icons-material/EventAvailableOutlined";
-
-
-
-
-
+import { hobbiesOptions } from "./dictionary";
 
 const name = "Omer";
-
-const hobbiesOptions = [
-    "Pet",
-    "Sport",
-    "Yoga",
-    "Play date",
-    "Fostering",
-    "Baking",
-    "Family",
-    "Walk",
-    "Cosmetic",
-    "Trip",
-    "Art",
-    "Dance",
-    "Fashion",
-    "Pilates",
-    "Cooking",
-    "Swim",
-    "Movies",
-    "Writing",
-  ];
-
 
   const currentActivities = [
       {type: "Running", location: "Yarkon Park, Tel Aviv", date: "1.12", time: "9:30", lat: 32.109333, lng: 34.855499, id:1},
@@ -58,7 +32,6 @@ function Home() {
     const handleClick = () => {
 
     }
-
 
     return (
         <div className="container">

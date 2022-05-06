@@ -7,6 +7,7 @@ import SignUpSecond from "./SignUpSecond";
 import SignUpThird from "./SignUpThird";
 import SignUpFourth from "./SignUpFourth";
 import Home from "./Home";
+import AddActivity from "./AddActivity"
 import Map from "./components/Map/Map";
 
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='/home' element={<Home />}  />
         <Route path='/map' element={<Map />} />
         {/* <Route path="/activity/:id" component={<Activity />} /> */}
+        <Route path='/addactivity' element={<AddActivity />} />
 
     </Routes>
   );
