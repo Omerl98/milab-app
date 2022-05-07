@@ -5,7 +5,7 @@ import Marker from "../Marker/Marker";
 import { Link } from "react-router-dom";
 
 export default function Map(props) {
-
+  const { height, width='100%' } = props;
   const defaultProps = {
     center: {
       lat: 32.109333,
@@ -34,7 +34,7 @@ export default function Map(props) {
 
   if (!isLoaded) return <div> Loading... </div>
   return(
-          <div className="mapContainer" style={{width: "100%", height:"40vh"}}>
+          <div className="mapContainer" style={{width: width, height:height}}>
             <GoogleMapReact
               bootstrapURLKeys={{ key: API_KEY }}
               options={createMapOptions}

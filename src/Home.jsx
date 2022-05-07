@@ -7,6 +7,7 @@ import ActivityCard from "./components/ActivityCard/ActivityCard";
 import { Link } from "react-router-dom";
 import Map from "./components/Map/Map";
 import Chip from '@mui/material/Chip';
+import axios from "axios";
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack';
 import API_KEY from './keys.js'
@@ -19,12 +20,12 @@ import EventAvailableOutlined from "@mui/icons-material/EventAvailableOutlined";
 import { hobbiesOptions } from "./dictionary";
 
 const name = "Omer";
-
-  const currentActivities = [
-      {type: "Running", location: "Yarkon Park, Tel Aviv", date: "1.12", time: "9:30", lat: 32.109333, lng: 34.855499, id:1},
-      {type: "Running", location: "Yarkon Park, Tel Aviv", date: "1.12", time: "9:30", lat: 32.111767, lng: 34.801361, id:2},
-      {type: "Running", location: "Yarkon Park, Tel Aviv", date: "1.12", time: "9:30", lat: 32.083161, lng: 34.767619, id:3}
-  ]
+    let currentActivitiesRemote;
+    const currentActivities = [
+        {type: "Running", location: "Yarkon Park, Tel Aviv", date: "1.12", time: "9:30", lat: 32.109333, lng: 34.855499, id:1},
+        {type: "Running", location: "Yarkon Park, Tel Aviv", date: "1.12", time: "9:30", lat: 32.111767, lng: 34.801361, id:2},
+        {type: "Running", location: "Yarkon Park, Tel Aviv", date: "1.12", time: "9:30", lat: 32.083161, lng: 34.767619, id:3}
+    ]
   
 
 function Home() {
@@ -33,6 +34,14 @@ function Home() {
     const handleClick = () => {
 
     }
+    useEffect(() => {
+        axios.get('http://localhost:8080/getActivities')
+          .then(response => {
+            currentActivitiesRemote = response.data;
+            console.log(currentActivitiesRemote);
+        })
+          .catch(error => console.log(error));
+      }, []);
 
     return (
         <div className="container">
@@ -49,7 +58,7 @@ function Home() {
                 </Stack>
             </div>
             <div className="google-map-container">
-                <Map activities={currentActivities}/>
+                <Map height='40vh' activities={currentActivities}/>
             </div>
             <div className="activity-slider">
                 <Stack direction="row" spacing={1}>

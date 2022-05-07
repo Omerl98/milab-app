@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+.activity-container {
+    font-family: 'Roboto', sans-serif;
+    margin: auto;
+    margin-top: 30px;
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+}
+
+.img-div {
+    display: flex;
+    overflow-x: hidden;
+    justify-content: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.content-div {
+    margin: auto;
+    width: 90%;
+    border-radius: 20px;
+}
+
+.map-container {
+    margin: auto;
+
+}
+
+.content-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.content-header > div  {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90px;
+}
+
+.content-header > div > img:hover {
+    cursor: pointer;
+}
+
+h4 {
+    padding: 0;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 900;
+}
+
+p {
+    margin: 0;
+}
+
+.join-button {
+    border-radius: 40px;
+    border: 0px;
+    width: 320px;
+    height: 55px;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    background-color: #637EFC;
+}
+
+.join-button-div {
+    margin:auto;
+    margin-top: 10px;
+}
