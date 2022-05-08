@@ -22,12 +22,6 @@ function App() {
       <Route path="/SignUpThird" element={<SignUpThird />} />
       <Route path="/SignUpFourth" element={<SignUpFourth />} />
       <Route path="/newActivity" element={<NewActivity />} />
-      <Route
-        path="/home"
-        render={() => {
-          return <div> HERE </div>;
-        }}
-      />
     </Routes>
   );
 }
