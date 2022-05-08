@@ -11,6 +11,8 @@ import axios from "axios";
 function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   const postReq = async () => {
     console.log(password);
@@ -30,38 +32,61 @@ function SignUp() {
       });
   };
   return (
-    <div className="container">
+    <div className="container-signup">
       <div className="logo-wrapper">
         <img src={mainLogo} className="logo-img" />
       </div>
-
+      <h3 className="signup-header">Sign Up</h3>
       <form className="login-form" onsubmit="event.preventDefault();">
+        <div className="signup-input-div">
+        <label>First Name</label>
+          <input
+            type="text"
+            onChange={(event) => setFirstName(event.target.value)}
+            name="first-name"
+          />
+        </div>
+        <div className="signup-input-div">
+        <label>Last Name</label>
+        <input
+          type="text"
+          onChange={(event) => setLastName(event.target.value)}
+          name="last-name"
+        />
+        </div>
+        <div className="signup-input-div">
         <label>Email Address</label>
         <input
           type="text"
           onChange={(event) => setEmail(event.target.value)}
           name="email"
         />
+        </div>
+        <div className="signup-input-div">
         <label>Password</label>
         <input
           type="text"
           onChange={(event) => setPassword(event.target.value)}
           name="password"
         />
+        </div>
 
-        <Link className="submit-button" to={{ pathname: "/signupsecond" }}>
-          <button className="submit-button" type="button" onClick={postReq}>
-            Join the hood
-          </button>
-        </Link>
+        <div className="signup-button-div">
+          <Link to={{ pathname: "/signupsecond" }}>
+            <button className="signup-button" type="button" onClick={postReq}>
+              Join the hood
+            </button>
+          </Link>
+        </div>
+        
       </form>
       <p className="line-text">
         <span>OR</span>
       </p>
       <div className="social-nav">
-        <img src={fbIcon} className="icon fb-icon" />
-        <img src={googleIcon} className="icon google-icon" />
-        <img src={appleIcon} className="icon apple-icon" />
+        <img src={fbIcon} className="icon-signup fb-icon" />
+        <img src={googleIcon} className="icon-signup google-icon" />
+        <img src={appleIcon} className="icon-signup apple-icon" />
       </div>
       <p className="sign-in-text">
         Already have an account? <a href="#">Sign in</a>

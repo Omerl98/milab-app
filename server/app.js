@@ -166,6 +166,7 @@ app.get("/createactivity", function (req, res) {
   const auth = getAuth();
   onAuthStateChanged(auth, (user) => {
     if (user) {
+      console.log("SERVER")
       let year = req.query.date.slice(0, 4);
       let month = req.query.date.slice(5, 7);
       let day = req.query.date.slice(8, 10);
@@ -185,18 +186,15 @@ app.get("/createactivity", function (req, res) {
         req.query.endsAt.slice(3, 5)
       ).toString();
       let activity = {
+        title: req.query.title,
+        activityType: req.query.activityType,
+        activityDesc: req.query.activityDesc,
         createdBy: user.uid,
         createdTime: new Date().toString(),
         startTime: startTime,
         endTime: endTime,
-        location: {
-          // longitude: req.query.longitude,
-          // latitude: req.query.latitude,
-          city: req.query.city,
-          street: req.query.street,
-          street_num: req.query.street_num,
-        },
-        type: req.query.type,
+        location: req.query.location,
+        participantsGender: req.query.participantsGender,
         participants: [user.uid],
         participantsMax: req.query.participantsMin,
         participantsMin: req.query.participantsMax,

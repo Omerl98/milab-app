@@ -1,4 +1,5 @@
 import "./signup.css";
+import './SignUpSecond.css'
 import mainLogo from "./assets/mainLogo.png";
 import { useEffect, useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";

@@ -6,14 +6,12 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
+import { hobbiePhotos } from "../../dictionary";
 import Typography from '@mui/material/Typography';
 
 export default function ActivityCard(props) {
 
     const {type, location, date, time, id} = props;
-    const imageDictionary = {
-        Running: runningImg
-    }
   
     return(
             <Card component={Link} to={`/activity/${id}`} sx={{minWidth:200, maxWidth: 180 }}>
@@ -21,7 +19,7 @@ export default function ActivityCard(props) {
                 component="img"
                 alt={`activity-${type}`}
                 height="100"
-                image={imageDictionary[type]}
+                image={hobbiePhotos[type]}
             />
             <CardContent className="content-container">
                 <Typography gutterBottom variant="h6" component="div">

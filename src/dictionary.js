@@ -1,3 +1,6 @@
+import runningImg from './assets/activities/running.jpg';
+
+
 const hobbiesOptions = [
     "Pet",
     "Sport",
@@ -19,4 +22,8 @@ const hobbiesOptions = [
     "Writing",
   ];
 
-  export {hobbiesOptions};
+  const hobbiePhotos = {
+    "Running": runningImg
+  }
+
+  export {hobbiePhotos,hobbiesOptions};
