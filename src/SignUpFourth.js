@@ -2,9 +2,7 @@ import "./signup.css";
 import mainLogo from "./assets/mainLogo.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import blueMan from "./assets/blueMan.png";
-import blueManFinishSign from "./assets/blueManFinishSign.png";
-
+import raiseHand from "./assets/raiseHand.png";
 
 function SignUpFourth() {
   const postReq = async () => {
@@ -22,20 +20,21 @@ function SignUpFourth() {
       });
   };
 
+  let styleButton = {
+    margin: "0px auto",
+    display: "block",
+  };
 
   return (
     <div className="container" id="SignUpFourth">
-      <div className="logo-wrapper">
-        <img src={blueManFinishSign} className="blueManFinishSign" />
-        <img src={blueMan} className="blueMan" />
+      <div className="">
+        <img src={raiseHand} className="raiseHand" alt="raiseHand" />
       </div>
-      <h2 id="Wonderful">Wonderful!</h2>
+      <h2>All Done!</h2>
 
-      <form className="hobbies-form" onSubmit="event.preventDefault();">
-        <button className="submit-button" type="button" onClick={postReq}>
+      <button style={styleButton} className="submit-button" type="button" onClick={postReq}>
         Start exploring
-        </button>
-      </form>
+      </button>
     </div>
   );
 }

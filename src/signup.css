@@ -92,9 +92,13 @@
     margin: auto;
 }
 
-#Wonderful{
-    margin-top: 100px;
+.raiseHand{
+    width: 200px;
+    display: block;
+    margin: auto;
 }
+
+
 
 .social-nav {
     margin-top: 30px;

@@ -2,6 +2,8 @@ import "./signup.css";
 import mainLogo from "./assets/mainLogo.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
 
 function SignUpThird() {
   let hobbies = [];
@@ -73,9 +75,11 @@ function SignUpThird() {
             value={hobby}
           />
         ))}
-        <button className="submit-button" type="button" onClick={postReq}>
-          Done
-        </button>
+        <Link className="submit-button" to={{ pathname: "/signupfourth" }}>
+          <button className="submit-button" type="button" onClick={postReq}>
+            Done
+          </button>
+        </Link>
       </form>
     </div>
   );
