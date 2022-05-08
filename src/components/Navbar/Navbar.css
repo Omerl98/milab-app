@@ -1,0 +1,12 @@
+
+.MuiBottomNavigationAction-root:hover {
+    border-bottom: 1.5px solid #637EFC;
+    color: #637EFC;
+    background-color: aliceblue;
+}
+
+.MuiBottomNavigation-root {
+    position: fixed;
+    top: 82vh;
+    width: 360px;
+}

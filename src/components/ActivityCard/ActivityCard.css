@@ -1,0 +1,9 @@
+.MuiCard-root:hover {
+    color: #637EFC;
+    background-color: aliceblue;
+}
+
+.MuiCard-root {
+    text-decoration: none;
+}
+

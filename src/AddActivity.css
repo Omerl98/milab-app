@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+.container {
+    font-family: 'Roboto', sans-serif;
+    margin: auto;
+    margin-top: 30px;
+    max-width: 360px;
+    max-height: 800px;
+    text-align: center;
+    background-color: #FBFBFB;
+}
+
+.activity-type-slider{
+    margin-top: 5px;
+    overflow-x: scroll;
+}
+
+h4 {
+    font-weight: 500;
+    font-size: 16px;
+    padding-top: 40px;
+}
+
+.main-form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 30px;
+    width: 90%;
+    
+}
+
+.input-div {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: auto;
+    text-align: left;
+    width:100%;
+    font-size: 14px;
+}
+
+.input-div > input {
+    
+    border-radius: 20px;
+    border: 1px solid #B1B1B1;
+    margin-top: 5px;
+    width: 300px;
+    height: 35px;
+    background-color: white;
+}
+
+.input-div > label {
+    margin-left:5px;
+}
+
+.submit-button {
+    border-radius: 40px;
+    border: 0px solid black;
+    width: 300px;
+    height: 55px;
+    margin:10px auto 10px auto;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    background-color: #637EFC;
+}
+
+.time-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+}
+
+.starts-at-div>input, .ends-at-div>input{
+    width: 100px;
+   
+}
+
+.starts-at-div, .ends-at-div {
+    padding: 10px;
+    margin: 0;
+    text-align: left;
+}
+
+.search-icon-activity {
+    margin: auto;
+}
+
+.activity-description-div > input {
+    height: 65px;
+    border-radius: 60px;
+}
