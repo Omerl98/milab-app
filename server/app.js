@@ -42,6 +42,25 @@ const db = getDatabase();
 
 // ================== Authentication ================== //
 
+/// delete  - relevant only in production ////
+const auth = getAuth(appFirebase);
+signInWithEmailAndPassword(auth, "amzalegbarak@gmail.com", "barak2661995")
+  .then((userCredential) => {
+    // Signed Up
+    console.log(
+      `The user ${userCredential.user.reloadUserInfo.email} sign Up successfully`
+    );
+    console.log(userCredential.user.uid);
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(`errorCode:  ${errorCode}`);
+    console.log(`errorMessage:  ${errorMessage}`);
+  });
+
+/// delete  - relevant only in production ////
+
 app.get("/userSignUp", function (req, res) {
   const auth = getAuth(appFirebase);
   createUserWithEmailAndPassword(auth, req.query.email, req.query.password)
@@ -123,7 +142,10 @@ app.get("/SignUpThird", function (req, res) {
       set(refrence, req.query.hobbies);
       console.log("user third part saved in DB");
       res.send(
-        JSON.stringify({ user: user.reloadUserInfo.email, hobbies: req.query.hobbies })
+        JSON.stringify({
+          user: user.reloadUserInfo.email,
+          hobbies: req.query.hobbies,
+        })
       );
     } else {
       console.log(`couldn't save hobbies of this user in DB`);
@@ -144,23 +166,38 @@ app.get("/createactivity", function (req, res) {
   const auth = getAuth();
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      let date = new Date(
-        req.query.year,
-        req.query.month - 1,
-        req.query.day,
-        req.query.hour,
-        req.query.minute
+      console.log("SERVER")
+      let year = req.query.date.slice(0, 4);
+      let month = req.query.date.slice(5, 7);
+      let day = req.query.date.slice(8, 10);
+
+      let startTime = new Date(
+        year,
+        month - 1,
+        day,
+        req.query.startAt.slice(0, 2),
+        req.query.startAt.slice(3, 5)
+      ).toString();
+      let endTime = new Date(
+        year,
+        month - 1,
+        day,
+        req.query.endsAt.slice(0, 2),
+        req.query.endsAt.slice(3, 5)
       ).toString();
       let activity = {
+        title: req.query.title,
+        activityType: req.query.activityType,
+        activityDesc: req.query.activityDesc,
         createdBy: user.uid,
         createdTime: new Date().toString(),
-        StartTime: date,
-        location: {
-          longitude: req.query.longitude,
-          latitude: req.query.latitude,
-        },
-        type: req.query.type,
+        startTime: startTime,
+        endTime: endTime,
+        location: req.query.location,
+        participantsGender: req.query.participantsGender,
         participants: [user.uid],
+        participantsMax: req.query.participantsMin,
+        participantsMin: req.query.participantsMax,
       };
       console.log(activity);
       const refrence = ref(db, "activities/" + uniqid());
@@ -192,52 +229,6 @@ app.get("/joinActivity", function (req, res) {
     }
   });
 });
-
-// app.get("/infostudyzone", function (req, res) {
-//   const refrence = ref(db, "studyZones/" + req.query.name);
-//   onValue(refrence, (snapshot) => {
-//     let data = snapshot.val();
-//     console.log(data);
-//     let answer = {
-//       name: req.query.name,
-//       crowded: data.crowded.rating,
-//       food: data.food.rating,
-//       price: data.price.rating,
-//       totalRating: data.totalRating,
-//       location: { latitude: data.location.latitude, longitude: data.location.longitude },
-//       //latitude: data.location.latitude,
-//       //longitude: data.location.longitude,
-//     };
-//     res.send(JSON.stringify(answer));
-//   });
-// });
-
-// app.get("/updatestudyzones", function (req, res) {
-//   const refrence = ref(db, "studyZones/" + req.query.name);
-//   onValue(refrence, (snapshot) => {
-//     let data = snapshot.val();
-
-//     function updateRatings(key) {
-//       data[key].raters.push(parseInt(req.query[key]));
-//       let sum = data[key].raters.reduce((a, b) => a + b, 0);
-//       let len = data[key].raters.length;
-//       data[key].rating = parseFloat((sum / len).toFixed(2));
-//     }
-//     updateRatings("crowded");
-//     updateRatings("food");
-//     updateRatings("price");
-
-//     data.totalRating = parseFloat(
-//       (
-//         (1 / 3) * data.crowded.rating +
-//         (1 / 3) * data.food.rating +
-//         (1 / 3) * data.price.rating
-//       ).toFixed(2)
-//     );
-//     set(refrence, data);
-//     res.send(JSON.stringify(data));
-//   });
-// });
 
 // ================== FireBase To Map ================== //
 

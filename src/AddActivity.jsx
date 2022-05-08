@@ -41,25 +41,36 @@ function AddActivity() {
 
     const handleActivityType = (event) => {
     // setActivity(newValue);
-    console.log(event);
     };
 
 
 
     const postReq = async () => {
-        // await axios.get('http://localhost:8080/userSignUp', {
-        //     params: {
-        //         email: email,
-        //         password: password
-        //       }
-        //   })
-        //   .then(function (response) {
-        //     console.log(response);
-        //   })
-        //   .catch(function (error) {
-        //     console.log(error);
-        //   });
-    };
+        console.log("HERE")
+        await axios
+          .get("http://localhost:8080/createactivity", {
+            params: {
+              title: title,
+              activityType: activity,
+              activityDesc: description,
+              date: date,
+              startAt: startTime,
+              endsAt: endTime,
+              location: location,
+              participantsMin: participants[0],
+              participantsMax: participants[1],
+              participantsGender: participantType,
+            },
+          })
+          .then(function (response) {
+            console.log(response);
+            console.log("created activity");
+          })
+          .catch(function (error) {
+            console.log(error);
+            console.log("ERROR with creating activity");
+          });
+      };
 
     return (
         <div className="container">
@@ -74,28 +85,28 @@ function AddActivity() {
                     <div className="activity-type-slider">
                     <Stack direction="row" spacing={1}>
                         <SearchIcon className="search-icon-activity"></SearchIcon>
-                        {hobbiesOptions.map( hobbie => { return <Chip value={hobbie} sx={{height: "35px", minWidth: "80px"}} className="hobbie-chip" variant="outlined" label={hobbie} onClick={handleActivityType} />})}
+                        {hobbiesOptions.map( hobbie => { return <Chip value={hobbie} sx={{height: "35px", minWidth: "80px"}} className="hobbie-chip" variant="outlined" label={hobbie} onClick={handleActivityType()} />})}
                     </Stack>
                     </div>
                 </div>
                 <Divider variant="middle" />
                 <div className="date-div input-div">
                     <label>Date</label>
-                    <input type="text" onChange={event => setDate(event.target.value)} name="date"/>
+                    <input placeholder="DD/MM/YY" type="text" onChange={event => setDate(event.target.value)} name="date"/>
                 </div>
                 <div className="time-div input-div">
                     <div className="input-div starts-at-div"> 
                         <label>Starts at</label>
-                        <input type="text" onChange={event => setStartTime(event.target.value)} name="start-time"/>
+                        <input placeholder="HH:MM" type="text" onChange={event => setStartTime(event.target.value)} name="start-time"/>
                     </div>
                     <div className="input-div ends-at-div">
                         <label>Ends at</label>
-                        <input type="text" onChange={event => setEndTime(event.target.value)} name="end-time"/>
+                        <input placeholder="HH:MM" type="text" onChange={event => setEndTime(event.target.value)} name="end-time"/>
                     </div>
                 </div>
                 <div className="location-div input-div">
                     <label>Location</label>
-                    <input type="text" onChange={event => setLocation(event.target.value)} name="location"/>
+                    <input placeholder="For example: Hana Rubina 46, Herzliya" type="text" onChange={event => setLocation(event.target.value)} name="location"/>
                 </div>
                 <Divider variant="middle" />
                 <div className="participants-div input-div">
@@ -125,7 +136,8 @@ function AddActivity() {
                     <label>Activity Description</label>
                     <input type="text" onChange={event => setDescription(event.target.value)} name="description"/>
                 </div>
-                <Link to={{pathname: '/home'}}><button className="submit-button" type="button" onClick={postReq} >Create activity</button></Link>
+                {/* <Link to={{pathname: '/home'}}><button className="submit-button" type="button" onClick={postReq} >Create activity</button></Link> */}
+                <button className="submit-button" type="button" onClick={postReq} >Create activity</button>
 
             </form>
             <navbar className="navbar">

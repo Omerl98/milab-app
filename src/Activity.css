@@ -51,7 +51,7 @@ h4 {
     font-weight: 900;
 }
 
-p {
+.activity-container > p {
     margin: 0;
 }
 

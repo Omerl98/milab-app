@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box;
+}
+
+.container-signup-second {
+    margin: auto;
+    max-width: 360px;
+    margin-top: 30px;
+}
+
+.signup-second-input-div {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: auto;
+    text-align: left;
+    width:330px;
+    font-size: 14px;
+}
+
+.signup-second-header {
+    margin: 20px 0 20px 0;
+}
+
+.signup-second-input-div > input {
+    border-radius: 20px;
+    border: 1px solid #B1B1B1;
+    margin-top: 5px;
+    width: 300px;
+    height: 35px;
+    background-color: white;
+}
+
+.signup-second-input-div > label {
+    margin-left:5px;
+}
+
+.icon-signup {
+    width: 50px;
+}
+
+.logo-wrapper {
+    margin: auto;
+    align-items: center;
+    text-align: center;
+}
+
+.logo-img {
+    width:180px;
+}
+
+.signup-second-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.next-button {
+    border-radius: 40px;
+    border: 0px solid black;
+    width: 320px;
+    height: 55px;
+    margin:0 auto 40px auto;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    background-color: #637EFC;
+}
+
+.next-button-div {
+    margin: auto;
+}
+
+.profile-pic-input {
+    flex-direction: row;
+    align-items: flex-end;
+    margin-bottom: 150px;
+}
+
+.profile-pic-input > button{
+    margin-left: 3px;
+    background-color: white;
+    border: 0;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.signup-second-p {
+    margin-top: 50px;
+    margin-bottom: 60px;
+    text-align: center;
+}

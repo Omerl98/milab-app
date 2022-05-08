@@ -92,3 +92,7 @@ h4 {
     height: 65px;
     border-radius: 60px;
 }
+
+input {
+    padding-left: 10px;
+}

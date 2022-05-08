@@ -1,4 +1,5 @@
 import "./signup.css";
+import './SignUpSecond.css'
 import mainLogo from "./assets/mainLogo.png";
 import { useEffect, useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
@@ -14,15 +15,15 @@ function SignUpSecond() {
 
   const postReq = async () => {
     await axios
-      .get("http://localhost:8080/SignUpSecond",{
-        params:{
+      .get("http://localhost:8080/SignUpSecond", {
+        params: {
           firstName: firstName,
           lastName: lastName,
           age: age,
           city: city,
           street: street,
           street_num: streetNum,
-        }
+        },
       })
       .then(function (response) {
         console.log(response);
@@ -81,13 +82,11 @@ function SignUpSecond() {
           placeholder="Your street number"
         />
 
-        <Link className="submit-button" to={{pathname: '/signupthird'}}>
-        <button className="submit-button" type="button" onClick={postReq}>
-          Next
-        </button>
+        <Link className="submit-button" to={{ pathname: "/signupthird" }}>
+          <button className="submit-button" type="button" onClick={postReq}>
+            Next
+          </button>
         </Link>
-
-
       </form>
     </div>
   );
