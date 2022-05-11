@@ -31,7 +31,8 @@ const name = "Omer";
 function Home() {
 
     const [value, setValue] = useState(0);
-    const handleClick = () => {
+    const handleClick = (event,hobbie) => {
+        // console.log("HERE");
 
     }
     useEffect(() => {
@@ -54,7 +55,7 @@ function Home() {
             </div>
             <div className="activity-search-bar">
                 <Stack direction="row" spacing={1}>
-                    {hobbiesOptions.map( hobbie => { return <Chip className="hobbie-chip" variant="outlined" label={hobbie} onClick={handleClick}/>})}
+                    {hobbiesOptions.map( hobbie => { return <Chip className="hobbie-chip" variant="outlined" label={hobbie} onClick={(event) => handleClick(event,hobbie)}/>})}
                 </Stack>
             </div>
             <div className="google-map-container">

@@ -7,7 +7,7 @@
     max-width: 360px;
     margin-top: 30px;
     height: 800px;
-    background-image: linear-gradient(white, white, dodgerblue);
+    background-image: linear-gradient(white, #F4F4F4, dodgerblue);
     display: flex;
     flex-direction: column;
     align-items: center;
