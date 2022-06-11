@@ -9,12 +9,13 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import { Stack } from "@mui/material";
+import { Stack, Button } from "@mui/material";
 import { Chip } from "@mui/material";
 import { hobbiesOptions } from "./dictionary";
 import SearchIcon from '@mui/icons-material/Search';
 import Slider from '@mui/material/Slider';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+
 
 
 
@@ -31,29 +32,27 @@ function AddActivity() {
     const [activity, setActivity] = useState('')
 
     const handleParticipantType = (event) => {
-      setParticipantType(event.target.value);
+      setParticipantType(event);
     };
 
     const handleParticipantsSlider = (event, newValue) => {
         setParticipants(newValue);
-        console.log(newValue);
       };
 
-    const handleActivityType = (event) => {
-    // setActivity(newValue);
-    };
-
-
+    const handleActivityType = event => setActivity(event.target.innerText);
 
     const postReq = async () => {
-        console.log("HERE")
+        // let lat = await Math.random()/100+34.87;
+        // let lng = await Math.random()/100+32.11;
         await axios
           .get("http://localhost:8080/createactivity", {
             params: {
               title: title,
-              activityType: activity,
+              type: activity,
               activityDesc: description,
               date: date,
+              lat: 34.877777,
+              lng: 32.111111,
               startAt: startTime,
               endsAt: endTime,
               location: location,
@@ -81,11 +80,11 @@ function AddActivity() {
                     <input type="text" onChange={event => setTitle(event.target.value)} name="title"/>
                 </div>
                 <div className="activity-type-div input-div">
-                    <label>Activity Type</label>
+                    <label>Activity Type: <span style={{fontWeight:"bold", fontSize:"16px"}}>{activity}</span></label>
                     <div className="activity-type-slider">
                     <Stack direction="row" spacing={1}>
                         <SearchIcon className="search-icon-activity"></SearchIcon>
-                        {hobbiesOptions.map( hobbie => { return <Chip value={hobbie} sx={{height: "35px", minWidth: "80px"}} className="hobbie-chip" variant="outlined" label={hobbie} onClick={handleActivityType()} />})}
+                        {hobbiesOptions.map( hobbie => { return <Chip value={hobbie} ariaLabel={hobbie} sx={{height: "35px", minWidth: "80px"}} className="hobbie-chip" variant="outlined" label={hobbie} onClick={(e)=>handleActivityType(e)} />})}
                     </Stack>
                     </div>
                 </div>
@@ -137,8 +136,7 @@ function AddActivity() {
                     <input type="text" onChange={event => setDescription(event.target.value)} name="description"/>
                 </div>
                 {/* <Link to={{pathname: '/home'}}><button className="submit-button" type="button" onClick={postReq} >Create activity</button></Link> */}
-                <button className="submit-button" type="button" onClick={postReq} >Create activity</button>
-
+                <Link to='/home'><button className="submit-button" type="button" onClick={postReq} >Create activity</button></Link>
             </form>
             <navbar className="navbar">
                 <Navbar></Navbar>

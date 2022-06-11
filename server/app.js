@@ -164,7 +164,7 @@ app.get("/getactivities", function (req, res) {
 
 app.get("/createactivity", function (req, res) {
   const auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
+  onAuthStateChanged(auth, async (user) => {
     if (user) {
       console.log("SERVER")
       let year = req.query.date.slice(0, 4);
@@ -187,12 +187,14 @@ app.get("/createactivity", function (req, res) {
       ).toString();
       let activity = {
         title: req.query.title,
-        activityType: req.query.activityType,
+        type: req.query.type,
         activityDesc: req.query.activityDesc,
         createdBy: user.uid,
         createdTime: new Date().toString(),
         startTime: startTime,
         endTime: endTime,
+        lat: Number(req.query.lat),
+        lng:Number(req.query.lng),
         location: req.query.location,
         participantsGender: req.query.participantsGender,
         participants: [user.uid],
@@ -201,7 +203,7 @@ app.get("/createactivity", function (req, res) {
       };
       console.log(activity);
       const refrence = ref(db, "activities/" + uniqid());
-      set(refrence, activity);
+      await set(refrence, activity);
       onValue(refrence, (snapshot) => res.send(JSON.stringify(snapshot.val())));
     } else {
       console.log(`The user is signed out`);

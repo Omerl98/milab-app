@@ -21,25 +21,32 @@ import { hobbiesOptions } from "./dictionary";
 
 const name = "Omer";
     let currentActivitiesRemote;
-    const currentActivities = [
-        {type: "Running", location: "Yarkon Park, Tel Aviv", date: "1.12", time: "9:30", lat: 32.109333, lng: 34.855499, id:1},
-        {type: "Running", location: "Yarkon Park, Tel Aviv", date: "1.12", time: "9:30", lat: 32.111767, lng: 34.801361, id:2},
-        {type: "Running", location: "Yarkon Park, Tel Aviv", date: "1.12", time: "9:30", lat: 32.083161, lng: 34.767619, id:3}
+    let currentActivities = [
+        // {type: "Running", location: "Yarkon Park, Tel Aviv", date: "1.12", time: "9:30", lat: 32.109333, lng: 34.855499, id:1},
+        // {type: "Running", location: "Yarkon Park, Tel Aviv", date: "1.12", time: "9:30", lat: 32.111767, lng: 34.801361, id:2},
+        // {type: "Running", location: "Yarkon Park, Tel Aviv", date: "1.12", time: "9:30", lat: 32.083161, lng: 34.767619, id:3}
     ]
   
 
 function Home() {
 
     const [value, setValue] = useState(0);
+    const [currentActivities, setCurrentActivities] = useState([]);
     const handleClick = (event,hobbie) => {
         // console.log("HERE");
 
     }
     useEffect(() => {
         axios.get('http://localhost:8080/getActivities')
-          .then(response => {
+          .then(async(response) => {
             currentActivitiesRemote = response.data;
-            console.log(currentActivitiesRemote);
+            let activities = [];
+            for(const activity in currentActivitiesRemote) {
+                activities.push({id: activity, ...currentActivitiesRemote[activity]});
+              }
+              console.log(activities);
+              setCurrentActivities(activities);
+              console.log(currentActivities);
         })
           .catch(error => console.log(error));
       }, []);
